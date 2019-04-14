@@ -37,7 +37,7 @@ node('docker-slave-general') {
   
   stage('Publish') {
     withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-      sh "docker push ilanbowen/${DockerImage}"
+      sh "docker push ilanbowen/opsschool:${DockerImage}"
     }
   }
 }
