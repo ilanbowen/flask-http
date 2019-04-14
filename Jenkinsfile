@@ -1,5 +1,5 @@
 node('docker-slave-general') { 
-  def DockerImage = "webserver:v1.0"
+  def DockerImage = "ilanbowen/opsschool/webserver:v1.0"
   
   stage('Pre') { // Run pre-build steps
     cleanWs()
@@ -37,7 +37,7 @@ node('docker-slave-general') {
   
   stage('Publish') {
     withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-      sh "docker push ilanbowen/opsschool:${DockerImage}"
+      sh "docker push ${DockerImage}"
     }
   }
 }
