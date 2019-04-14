@@ -34,4 +34,10 @@ node('docker-slave-general') {
     }
     return
   }
+  
+  stage('Publish') {
+    withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+      sh 'docker push ilanbowen/${DockerImage}'
+    }
+  }
 }
